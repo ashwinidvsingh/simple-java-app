@@ -1,4 +1,5 @@
 def gv
+
 pipeline{
     agent any
     tools{
@@ -9,7 +10,7 @@ pipeline{
             steps{
                 script{
                     echo "initializing the build..."
-                    df = load "script.groovy"
+                    gv = load "script.groovy"
                 }
             }
         }
