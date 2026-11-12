@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-@Library('jenkins-shared-library')
+@Library('jenkins-shared-library') _
 def gv
 
 pipeline{
@@ -28,7 +28,7 @@ pipeline{
         stage("build image"){
             steps{
                 script{
-                    buildImage()
+                    buildImage 'ashwinidvsingh/app-image-build-docker:1.2'
                 }
             }
         }
