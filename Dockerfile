@@ -2,4 +2,4 @@
     RUN mkdir -p /home/app
     COPY . /home/app
     WORKDIR /home/app
-    CMD ["java", "target/my-app-1.0-SNAPSHOT.jar"] #re-deploy
+    CMD ["java", "target/my-app-1.0-SNAPSHOT.jar"]
