@@ -4,4 +4,4 @@
     # WORKDIR /home/app
     COPY ./target/my-app-*.jar /home/app/
     WORKDIR /home/app
-    CMD ["java", "-jar", "my-app-*.jar"]
+    CMD ["java", "-jar", "my-app-*.jar"] #command to start java application
