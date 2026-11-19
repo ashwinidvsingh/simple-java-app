@@ -22,6 +22,16 @@ pipeline{
                 }
             }
         }
+        stage("versioning"){
+            steps{
+                script{
+                    echo "Versioning the build..."
+                    sh 'mvn build-helper:parse-version versions:set -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVersion.nextIncrementalVersion} versions:commit'
+                    def matcher = readfile('pom.xml') =~ '<version>(.+)</version>'
+                    env.IMAGE_VERSION = matcher[0][1]
+                }
+            }
+        }
         stage("build jar"){
             steps{
                 script{
@@ -33,7 +43,7 @@ pipeline{
         stage("build image"){
             steps{
                 script{
-                    buildImage 'ashwinidvsingh/app-image-build-docker:1.2'
+                    buildImage "ashwinidvsingh/app-image-build-docker:${env.IMAGE_VERSION}"
                 }
             }
         }
