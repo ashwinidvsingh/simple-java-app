@@ -20,7 +20,9 @@ pipeline{
                     echo "Versioning the build..."
                     sh 'mvn build-helper:parse-version versions:set -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVersion.nextIncrementalVersion} versions:commit'
                     def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
-                    env.IMAGE_VERSION = matcher[0][1]
+                    // env.IMAGE_VERSION = matcher[0][1]
+                    def version = matcher[0][1]
+                    env.IMAGE_VERSION = "$version-$BUILD_NUMBER"
                 }
             }
         }
