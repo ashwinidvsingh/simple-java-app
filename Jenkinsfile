@@ -2,7 +2,7 @@
 pipeline {
     agent any
  tools {
-        maven 'maven-latest'   
+        maven 'maven-latest'   //maven-id given in config
     }
     
     stages {
