@@ -27,14 +27,8 @@ pipeline {
                 '''
                 
                 // 3. Use Jenkins credentials to push securely
-                withCredentials([usernamePassword(
-                    credentialsId: 'GITHUB_CREDS',
-                    usernameVariable: 'GIT_USER',
-                    passwordVariable: 'GIT_PASS'
-                )]) {
-                    sh '''
-                        git push https://${GIT_USER}:${GIT_PASS}@github.com/ashwinidvsingh/simple-java-app.git HEAD:automatic-build-pipeline
-                    '''
+                withCredentials([string(credentialsId: 'GITHUB_CREDS', variable: 'GITHUB_TOKEN')]) {
+                    sh 'git push https://${GITHUB_TOKEN}@github.com/ashwinidvsingh/simple-java-app.git HEAD:automatic-build-pipeline'
                 }
             }
         }
