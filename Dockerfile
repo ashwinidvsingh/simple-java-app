@@ -1,4 +1,4 @@
-    FROM maven:3.9-eclipse-temurin-17
+    FROM maven:3.9-eclipse-temurin-17 //image-name
     RUN mkdir -p /home/app
     COPY . /home/app
     WORKDIR /home/app
