@@ -2,7 +2,7 @@
 pipeline {
     agent any
  tools {
-        maven 'maven-latest'   // must match the name in Jenkins Global Tool Configuration
+        maven 'maven-latest'   
     }
     
     stages {
